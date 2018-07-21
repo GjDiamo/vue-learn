@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--引入vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <input v-model="currentInput" />
+    <ul>
+        <li v-for="i,index in hobbies">
+            {{i}}--{{index}}
+        </li>
+    </ul>
+    <hr>
+    遍历对象
+    <div v-for="value,key,index in user">{{value}}--{{key}}--{{index}}</div>
+</div>
+</body>
+
+<script>
+    /*
+    *  v-for="变量 in 数组"
+    *  v-for="value,key,index in 对象"
+    */
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            hobbies:['抽烟','喝酒','烫头'],
+            user:{
+                username:'zhangsan',
+                password:123,
+                age:30
+            },
+            currentInput:'',
+            index:0
+        }
+    })
+
+</script>
+</html>

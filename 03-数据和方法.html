@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+      <div>{{msg}}</div>
+
+      <button type="button"@click="handClick">选我选我</button>
+
+  </div>
+</body>
+   <!--这个项目目的在于练习显示方法和数据-->
+<script>
+    let vm=new Vue({
+       el:"#app",
+       data:{
+         msg:"Vue数据显示和方法"
+       },
+        methods:{
+           handClick(){
+               alert(this.msg)
+           }
+        }
+    })
+</script>
+</html>

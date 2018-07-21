@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .c1{
+            font-size: 20px;
+        }
+        .c1-actived{
+            font-size: 40px;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+        <div class="c1":class="{'c1-actived':isActived}" @click="handClick">{{msg}}</div>
+
+        <div :class="classes" >这是数组定义属性的方法</div>
+</div>
+</body>
+
+<script>
+   // 这demo的目的在于让我们明白，属性既可以以对象的方式绑定也可以以数组的方式绑定；
+    let vm=new Vue({
+        el:"#app",
+        data:{
+            msg:"属性既可以以对象的方式绑定也可以以数组的方式绑定",
+            isActived:true,
+            classes:['c1','c1-actived'],
+        },
+        methods:{
+            handClick(){
+               this.isActived=!this.isActived;
+            }
+        }
+    })
+</script>
+</html>

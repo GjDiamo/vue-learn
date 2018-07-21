@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+</body>
+<script>
+    let vm=new Vue({
+        el:"#app",
+        data:{
+            message:'hello world'
+        },
+        methods:{
+            handleFatherClick(){
+                alert('father....')
+            }
+        }
+    })
+</script>
+</html>

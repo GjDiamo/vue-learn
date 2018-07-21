@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div v-show="isShow">{{isShow}}</div>
+    <div v-if="isShow">{{age}}</div>
+    <button @click="isShow = !isShow">显示／隐藏</button>
+    <hr/>
+    不同的年龄段；
+    <div v-if="age<16">未成年</div>
+    <div v-else-if="age>=16 && age<=24">年轻人</div>
+    <div v-else-if="age>=25 && age<=60">中年人</div>
+    <div v-else="age>60">老年人</div>
+</div>
+</body>
+<script>
+    /*
+    * v-show : 控制元素显示和隐藏, 元素始终都中DOM树上
+    * v-if :  控制元素从dom树添加和删除
+    * v-else-if
+    * v-else
+    * */
+    let vm= new Vue({
+        el:"#app",
+        data:{
+           isShow:true,
+            age:68
+        }
+    })
+</script>
+
+</html>

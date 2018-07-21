@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+   <!--根标签-->
+    <div id="app">
+        {{content}}
+        <!--标题-->
+        <title-bar></title-bar>
+        <!--中间-->
+        <div>只有中间内容不同</div>
+        <!--底部-->
+        <menu-bar></menu-bar>
+    </div>
+</body>
+<script>
+    //定义vue的两中不痛方法；
+    //1:
+    Vue.component('title-bar',{
+        template:'<div>{{msg}}</div>',
+        data(){
+            return{
+                msg:'子组件的内容'
+            }
+        }
+    })
+    //2:
+    Vue.component('menu-bar',{
+        template:'<div>底部菜单组件模版</div>'
+    });
+
+    let vm=new Vue({
+        el:"#app",
+        data:{
+            content:'根实例的内容'
+        }
+    });
+</script>
+</html>

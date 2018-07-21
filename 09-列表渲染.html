@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表同步渲染</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input v-model="currentInput"/><button @click="handClick">添加</button>
+    <input v-model="index"/><button @click="handDelete">删除</button>
+    <button @click="handPop">演示popApi</button>
+    <ul>
+        <li v-for="i,index in hobbies">
+            {{i}}--{{index}}
+        </li>
+    </ul>
+    <hr/>
+    <div v-for="key,value,index in user">{{value}}--{{key}}--{{index}}</div>
+</div>
+</body>
+<script>
+    let vm =new Vue({
+        el:'#app',
+        data:{
+            hobbies:['弹琴','代码'],
+            user:{
+                usename:'郭海蛟',
+                password:"123",
+                age:'18',
+            },
+            currentInput:"",
+            index:0
+        },
+        methods:{
+            // 以下为添加内容的方法
+            handClick(){
+                this.hobbies.push(this.currentInput);
+                this.currentInput="";
+            },
+            handDelete(){
+                this.hobbies.splice(this.index,1);
+            },
+            handPop(){
+                this.hobbies.pop();
+
+            }
+        }
+    })
+</script>
+</html>

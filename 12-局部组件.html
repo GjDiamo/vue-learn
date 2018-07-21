@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--标题部分-->
+    <title-bar></title-bar>
+    <!--内容部分-->
+    <div>只有中间内容,每个页面是不一样</div>
+    <!--底部菜单栏部分-->
+    <menu-bar></menu-bar>
+</div>
+</body>
+<script>
+    //局部组件
+    let TitleBar={
+        name:"title-bar",
+        template:"<div>标题栏</div>"
+    }
+    let MenuBar={
+        name:"menu-bar",
+        template:"<div>不知道这是什么鬼的模版</div>"
+    }
+    let vm =new Vue({
+        el:'#app',
+        /*声明一个vue的实例*/
+        components:{
+            //定义局部组件的名称；
+            TitleBar,
+            MenuBar
+        }
+    });
+</script>
+</html>

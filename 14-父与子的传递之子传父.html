@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<!--根标签-->
+<div id="app">
+    <!--标题部分-->
+    <title-bar :mytitle="title" @childclick="handleOnChildClick"></title-bar>
+    <!--内容部分-->
+    <div>只有中间内容,每个页面是不一样</div>
+    <!--底部菜单栏部分-->
+    <menu-bar></menu-bar>
+</div>
+</body>
+<script>
+    //局部组件
+    let TitleBar={
+        name:"title-bar",
+        props:['mytitle'],
+        template:"<div> {{newtitle}}----<button @click='handleChildClick'>返回</button></div>",
+        data(){
+            return{
+                msg:'来自子组件的问候',
+                newtitle:this.mytitle
+            }
+        },
+        methods:{
+            handleChildClick(){
+                this.newtitle = "刘一超返回的信息"
+                //对外发布一个事件
+                this.$emit('childclick',this.msg);
+            }
+        }
+    }
+    let MenuBar={
+        name:"menu-bar",
+        template:"<div>自组件的底部模版</div>"
+
+    }
+    //父组件
+    let vm =new Vue({
+        el:'#app',
+        /*声明一个vue的实例*/
+        components:{
+            //定义局部组件的名称；
+            TitleBar,
+            MenuBar
+        },
+        data:{
+            title:"博彩首页"
+        },
+        methods:{
+            handleOnChildClick(msg){
+                alert(msg);
+            }
+        }
+    });
+</script>
+</html>

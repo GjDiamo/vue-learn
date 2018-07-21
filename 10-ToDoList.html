@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小型案例(增删改查)</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body >
+<div id="app">
+    <H2>今天要完成的任务</H2>
+    <input v-model="currentInput"/><button @click="handleClick">添加</button>
+    <ul>
+        <li v-for="item,index in todos">
+
+            <span :class="{done:item.isDone}">{{item.text}}</span>
+            <button @click="handleComplete(item)">标记完成</button>
+            <button @click="handledelete(item)">删除</button>
+
+        </li>
+    </ul>
+</div>
+</body>
+<style>
+    .done{
+        background-color: greenyellow;
+    }
+</style>
+<script>
+    let vm=new Vue({
+        el:"#app",
+            data:{
+            todos:[],
+            currentInput:'',
+        },
+        methods:{
+            handleComplete(item){
+                item.isDone=true;
+            },
+            handleClick(){
+                if(this.currentInput===''){
+                    return;
+                }
+                for(let i=0;i<this.todos.length;i++){
+                    let t =this.todos[i];
+                    if(t.text === this.currentInput){
+                        alert("本条已经存在！")
+                        return;
+                    }
+                }
+                this.todos.push({text:this.currentInput,isDone:false});
+                this.currentInput='';
+            },
+            handledelete(item){
+              let index= this.todos.indexOf(item);
+              this.todos.splice(index,1);
+            }
+        }
+    })
+</script>
+</html>
